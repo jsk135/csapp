@@ -281,7 +281,6 @@ int howManyBits(int x) {
     count = count + !(x&0x7ffffffc);
     count = count + !(x&0x7ffffffe);
     count = count + !(x&0x7fffffff);
-    // std::cout<<"count = "<<count<<std::endl;
     return 32 + (~count + 1) + 1;
 }
 //float
