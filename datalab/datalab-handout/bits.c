@@ -246,8 +246,43 @@ int logicalNeg(int x) {
  *  Rating: 4
  */
 int howManyBits(int x) {
-  
-  return 0;
+   int count = 0;
+    int temp = x>>31;
+    x = ((~temp)&x) + ((temp)&(~x));
+    count = count + !(x&0x80000000);
+    count = count + !(x&0x40000000);
+    count = count + !(x&0x60000000);
+    count = count + !(x&0x70000000);
+    count = count + !(x&0x78000000);
+    count = count + !(x&0x7C000000);
+    count = count + !(x&0x7E000000);
+    count = count + !(x&0x7F000000);
+    count = count + !(x&0x7F800000);
+    count = count + !(x&0x7fc00000);
+    count = count + !(x&0x7fe00000);
+    count = count + !(x&0x7ff00000);
+    count = count + !(x&0x7ff80000);
+    count = count + !(x&0x7ffc0000);
+    count = count + !(x&0x7ffe0000);
+    count = count + !(x&0x7fff0000);
+    count = count + !(x&0x7fff8000);
+    count = count + !(x&0x7fffc000);
+    count = count + !(x&0x7fffe000);
+    count = count + !(x&0x7ffff000);
+    count = count + !(x&0x7ffff800);
+    count = count + !(x&0x7ffffc00);
+    count = count + !(x&0x7ffffe00);
+    count = count + !(x&0x7fffff00);
+    count = count + !(x&0x7fffff80);
+    count = count + !(x&0x7fffffc0);
+    count = count + !(x&0x7fffffe0);
+    count = count + !(x&0x7ffffff0);
+    count = count + !(x&0x7ffffff8);
+    count = count + !(x&0x7ffffffc);
+    count = count + !(x&0x7ffffffe);
+    count = count + !(x&0x7fffffff);
+    // std::cout<<"count = "<<count<<std::endl;
+    return 32 + (~count + 1) + 1;
 }
 //float
 /* 
