@@ -272,7 +272,7 @@ int howManyBits(int x) {
    int count = 0;
     int temp = x>>31;
     x = ((~temp)&x) + ((temp)&(~x));
-    count = count + !(x&0x80000000);
+    count = !(x&0x80000000);
     count = count + !(x&0x40000000);
     count = count + !(x&0x60000000);
     count = count + !(x&0x70000000);
@@ -304,7 +304,7 @@ int howManyBits(int x) {
     count = count + !(x&0x7ffffffc);
     count = count + !(x&0x7ffffffe);
     count = count + !(x&0x7fffffff);
-    return 32 + (~count + 1) + 1;
+    return 34 + ~count;
 }
 //float
 /* 
@@ -319,7 +319,29 @@ int howManyBits(int x) {
  *   Rating: 4
  */
 unsigned floatScale2(unsigned uf) {
-  return 2;
+  unsigned flag = uf&0x80000000;
+  unsigned E = uf&0x7f800000;
+  unsigned M = uf&0x007fffff;
+  if(E == 0x7f800000){
+    return uf;
+  }
+  if(E == 0&&M == 0){
+    return uf;
+  }
+  if(E != 0){
+    E = E + 0x00800000;
+    if(E<0x7f800000){
+      return flag + E + M;
+    }else{
+      return flag + E;
+    }
+  }else{
+    M = M <<1;
+    if(M&0x00100000){
+      return flag + E + 0x00800000 + (M&0x007fffff);
+    }
+  }
+  return flag + E + M;
 }
 /* 
  * floatFloat2Int - Return bit-level equivalent of expression (int) f
@@ -334,7 +356,35 @@ unsigned floatScale2(unsigned uf) {
  *   Rating: 4
  */
 int floatFloat2Int(unsigned uf) {
-  return 2;
+  int flag = 0;
+  if(uf&0x80000000){
+    flag = -1;
+  }else{
+    flag = 1;
+  }
+  unsigned e = uf&0x7f800000;
+  int m = uf&0x007fffff;
+  if(e == 0x7f800000&&m != 0){
+    return 0x80000000u;
+  }
+  if(e == 0x7f800000&&m == 0){
+    return 0x80000000u;
+  }
+  if(e == 0){
+    return 0;
+  }
+  m = m + 0x00800000;
+  int move_bit = (e>>23) - 150;
+  if(move_bit>0){
+    if(move_bit>7)
+      return -2147483648;
+    return flag*(m<<move_bit);
+  }
+  if(move_bit<-24){
+    return 0;
+  }
+  return flag*(m>>(-move_bit));
+  
 }
 /* 
  * floatPower2 - Return bit-level equivalent of the expression 2.0^x
@@ -350,5 +400,14 @@ int floatFloat2Int(unsigned uf) {
  *   Rating: 4
  */
 unsigned floatPower2(int x) {
-    return 2;
+    if(x >= 128){
+      return 0x7f800000;
+    }
+    if(x < -129){
+      return 0;
+    }
+    if(x>=-126&&x<=127){
+      return (x+127)<<23;
+    }
+    return (0x00400000>>(126-x));
 }
