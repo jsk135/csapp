@@ -25,7 +25,7 @@ Dump of assembler code for function phase_2:
    0x0000000000400f41 <+69>:    pop    %rbp
    0x0000000000400f42 <+70>:    retq   
 End of assembler dump.
-
+phase_2:输入六个数字，在反汇编代码里可以看见mov    -0x4(%rbx),%eax，add    %eax,%eax第一个数字是1，跟着反汇编代码模拟运行可知六个数字是1 2 4 8 16 32
 Dump of assembler code for function phase_3:
    0x0000000000400f43 <+0>:     sub    $0x18,%rsp
    0x0000000000400f47 <+4>:     lea    0xc(%rsp),%rcx
@@ -64,3 +64,16 @@ Dump of assembler code for function phase_3:
    0x0000000000400fc9 <+134>:   add    $0x18,%rsp
    0x0000000000400fcd <+138>:   retq   
 End of assembler dump.
+phase_3:在这段反汇编里知道了cmp，ja命令（无符号比较），scanf()是有返回值的即输入参数个数，
+jmp *address 表示跳转到改地址所存储的地方去，看反汇编代码可知要输入两个数a b，第一个数在0-7范围
+第二个数则是根据执行*0x402470(,%rax,8)指令跳转到相应的地方，执行相应的mov指令，在判断与b是否相等
+有8个答案
+0->400f7c 0xcf
+1->400fb9 0x137
+2->400f83 0x2c3
+3->400f8a 0x100
+4->400f91 0x185
+5->400f98 0xce
+6->400f9f 0x2aa
+7->400fab 0x147
+
