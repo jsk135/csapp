@@ -1,3 +1,15 @@
+Dump of assembler code for function phase_1:
+   0x0000000000400ee0 <+0>:     sub    $0x8,%rsp
+   0x0000000000400ee4 <+4>:     mov    $0x402400,%esi
+   0x0000000000400ee9 <+9>:     callq  0x401338 <strings_not_equal>
+   0x0000000000400eee <+14>:    test   %eax,%eax
+   0x0000000000400ef0 <+16>:    je     0x400ef7 <phase_1+23>
+   0x0000000000400ef2 <+18>:    callq  0x40143a <explode_bomb>
+   0x0000000000400ef7 <+23>:    add    $0x8,%rsp
+   0x0000000000400efb <+27>:    retq   
+End of assembler dump.
+
+
 Dump of assembler code for function phase_2:
    0x0000000000400efc <+0>:     push   %rbp
    0x0000000000400efd <+1>:     push   %rbx
@@ -155,3 +167,50 @@ int fun(int rdx,int rsi,int rdi,int rcx,int rax) {
 1 0
 3 0
 7 0
+
+Dump of assembler code for function phase_5:
+   0x0000000000401062 <+0>:     push   %rbx
+   0x0000000000401063 <+1>:     sub    $0x20,%rsp
+   0x0000000000401067 <+5>:     mov    %rdi,%rbx
+   0x000000000040106a <+8>:     mov    %fs:0x28,%rax
+   0x0000000000401073 <+17>:    mov    %rax,0x18(%rsp)
+   0x0000000000401078 <+22>:    xor    %eax,%eax
+   0x000000000040107a <+24>:    callq  0x40131b <string_length>
+   0x000000000040107f <+29>:    cmp    $0x6,%eax
+   0x0000000000401082 <+32>:    je     0x4010d2 <phase_5+112>
+   0x0000000000401084 <+34>:    callq  0x40143a <explode_bomb>
+   0x0000000000401089 <+39>:    jmp    0x4010d2 <phase_5+112>
+   0x000000000040108b <+41>:    movzbl (%rbx,%rax,1),%ecx
+   0x000000000040108f <+45>:    mov    %cl,(%rsp)
+   0x0000000000401092 <+48>:    mov    (%rsp),%rdx
+   0x0000000000401096 <+52>:    and    $0xf,%edx
+   0x0000000000401099 <+55>:    movzbl 0x4024b0(%rdx),%edx
+   0x00000000004010a0 <+62>:    mov    %dl,0x10(%rsp,%rax,1)
+   0x00000000004010a4 <+66>:    add    $0x1,%rax
+   0x00000000004010a8 <+70>:    cmp    $0x6,%rax
+   0x00000000004010ac <+74>:    jne    0x40108b <phase_5+41>
+   0x00000000004010ae <+76>:    movb   $0x0,0x16(%rsp)
+   0x00000000004010b3 <+81>:    mov    $0x40245e,%esi
+   0x00000000004010b8 <+86>:    lea    0x10(%rsp),%rdi
+   0x00000000004010bd <+91>:    callq  0x401338 <strings_not_equal>
+   0x00000000004010c2 <+96>:    test   %eax,%eax
+   0x00000000004010c4 <+98>:    je     0x4010d9 <phase_5+119>
+   0x00000000004010c6 <+100>:   callq  0x40143a <explode_bomb>
+   0x00000000004010cb <+105>:   nopl   0x0(%rax,%rax,1)
+   0x00000000004010d0 <+110>:   jmp    0x4010d9 <phase_5+119>
+   0x00000000004010d2 <+112>:   mov    $0x0,%eax
+   0x00000000004010d7 <+117>:   jmp    0x40108b <phase_5+41>
+   0x00000000004010d9 <+119>:   mov    0x18(%rsp),%rax
+   0x00000000004010de <+124>:   xor    %fs:0x28,%rax
+   0x00000000004010e7 <+133>:   je     0x4010ee <phase_5+140>
+   0x00000000004010e9 <+135>:   callq  0x400b30 <__stack_chk_fail@plt>
+   0x00000000004010ee <+140>:   add    $0x20,%rsp
+   0x00000000004010f2 <+144>:   pop    %rbx
+   0x00000000004010f3 <+145>:   retq   
+End of assembler dump.
+phase_5:输入六个字符 以0x4024b0地址开头存储了16个字符 
+即：
+0x4024b0 <array.3449>:  0x6d    0x61    0x64    0x75    0x69    0x65    0x72    0x73
+0x4024b8 <array.3449+8>:        0x6e    0x66    0x6f    0x74    0x76    0x62    0x79    0x6c
+每个字符得低四位加上0x4024b0取出相应得字符 要求取出得六个字符为flyers 所以可知要输入得六个字符为
+i o n e f g
