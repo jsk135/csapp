@@ -53,3 +53,31 @@ Dump of assembler code for function touch2:
    0x0000000000401842 <+86>:    mov    $0x0,%edi
    0x0000000000401847 <+91>:    callq  0x400e40 <exit@plt>
 End of assembler dump.
+
+Dump of assembler code for function touch3:
+   0x00000000004018fa <+0>:     push   %rbx
+   0x00000000004018fb <+1>:     mov    %rdi,%rbx
+   0x00000000004018fe <+4>:     movl   $0x3,0x202bd4(%rip)        # 0x6044dc <vlevel>
+   0x0000000000401908 <+14>:    mov    %rdi,%rsi
+   0x000000000040190b <+17>:    mov    0x202bd3(%rip),%edi        # 0x6044e4 <cookie>
+   0x0000000000401911 <+23>:    callq  0x40184c <hexmatch>
+   0x0000000000401916 <+28>:    test   %eax,%eax
+   0x0000000000401918 <+30>:    je     0x40193d <touch3+67>
+   0x000000000040191a <+32>:    mov    %rbx,%rdx
+   0x000000000040191d <+35>:    mov    $0x403138,%esi
+   0x0000000000401922 <+40>:    mov    $0x1,%edi
+   0x0000000000401927 <+45>:    mov    $0x0,%eax
+   0x000000000040192c <+50>:    callq  0x400df0 <__printf_chk@plt>
+   0x0000000000401931 <+55>:    mov    $0x3,%edi
+   0x0000000000401936 <+60>:    callq  0x401c8d <validate>
+   0x000000000040193b <+65>:    jmp    0x40195e <touch3+100>
+   0x000000000040193d <+67>:    mov    %rbx,%rdx
+   0x0000000000401940 <+70>:    mov    $0x403160,%esi
+   0x0000000000401945 <+75>:    mov    $0x1,%edi
+   0x000000000040194a <+80>:    mov    $0x0,%eax
+   0x000000000040194f <+85>:    callq  0x400df0 <__printf_chk@plt>
+   0x0000000000401954 <+90>:    mov    $0x3,%edi
+   0x0000000000401959 <+95>:    callq  0x401d4f <fail>
+   0x000000000040195e <+100>:   mov    $0x0,%edi
+   0x0000000000401963 <+105>:   callq  0x400e40 <exit@plt>
+End of assembler dump.
