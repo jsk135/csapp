@@ -81,3 +81,208 @@ Dump of assembler code for function touch3:
    0x000000000040195e <+100>:   mov    $0x0,%edi
    0x0000000000401963 <+105>:   callq  0x400e40 <exit@plt>
 End of assembler dump.
+
+Dump of assembler code for function getval_142:
+   0x000000000040199a <+0>:     mov    $0x909078fb,%eax
+   0x000000000040199f <+5>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_273:
+   0x00000000004019a0 <+0>:     lea    -0x3c3876b8(%rdi),%eax
+   0x00000000004019a6 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_219:
+   0x00000000004019a7 <+0>:     lea    -0x6fa78caf(%rdi),%eax
+   0x00000000004019ad <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function setval_237:
+   0x00000000004019ae <+0>:     movl   $0xc7c78948,(%rdi)
+   0x00000000004019b4 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function setval_424:
+   0x00000000004019b5 <+0>:     movl   $0x9258c254,(%rdi)
+   0x00000000004019bb <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function setval_470:
+   0x00000000004019bc <+0>:     movl   $0xc78d4863,(%rdi)
+   0x00000000004019c2 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function setval_426:
+   0x00000000004019c3 <+0>:     movl   $0x90c78948,(%rdi)
+   0x00000000004019c9 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function getval_280:
+   0x00000000004019ca <+0>:     mov    $0xc3905829,%eax
+   0x00000000004019cf <+5>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function add_xy:
+   0x00000000004019d6 <+0>:     lea    (%rdi,%rsi,1),%rax
+   0x00000000004019da <+4>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function getval_481:
+   0x00000000004019db <+0>:     mov    $0x90c2895c,%eax
+   0x00000000004019e0 <+5>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function setval_296:
+   0x00000000004019e1 <+0>:     movl   $0x9090d199,(%rdi)
+   0x00000000004019e7 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_113:
+   0x00000000004019e8 <+0>:     lea    -0x36873177(%rdi),%eax
+   0x00000000004019ee <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_490:
+   0x00000000004019ef <+0>:     lea    -0x24df2e73(%rdi),%eax
+   0x00000000004019f5 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function getval_226:
+   0x00000000004019f6 <+0>:     mov    $0xc048d189,%eax
+   0x00000000004019fb <+5>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function setval_384:
+   0x00000000004019fc <+0>:     movl   $0xc084d181,(%rdi)
+   0x0000000000401a02 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_190:
+   0x0000000000401a03 <+0>:     lea    -0x1f76b7bf(%rdi),%eax
+   0x0000000000401a09 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function setval_276:
+   0x0000000000401a0a <+0>:     movl   $0xc908c288,(%rdi)
+   0x0000000000401a10 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_436:
+   0x0000000000401a11 <+0>:     lea    -0x6f6f3177(%rdi),%eax
+   0x0000000000401a17 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function getval_345:
+   0x0000000000401a18 <+0>:     mov    $0xc1e08948,%eax
+   0x0000000000401a1d <+5>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_479:
+   0x0000000000401a1e <+0>:     lea    -0x36ff3d77(%rdi),%eax
+   0x0000000000401a24 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_187:
+   0x0000000000401a25 <+0>:     lea    -0x3fc73177(%rdi),%eax
+   0x0000000000401a2b <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function setval_248:
+   0x0000000000401a2c <+0>:     movl   $0xdb08ce81,(%rdi)
+   0x0000000000401a32 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function getval_159:
+   0x0000000000401a33 <+0>:     mov    $0xc938d189,%eax
+   0x0000000000401a38 <+5>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_110:
+   0x0000000000401a39 <+0>:     lea    -0x3c1f7638(%rdi),%eax
+   0x0000000000401a3f <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_487:
+   0x0000000000401a40 <+0>:     lea    -0x3f7b3d77(%rdi),%eax
+   0x0000000000401a46 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_201:
+   0x0000000000401a47 <+0>:     lea    -0x381f76b8(%rdi),%eax
+   0x0000000000401a4d <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function getval_272:
+   0x0000000000401a4e <+0>:     mov    $0xd208d199,%eax
+   0x0000000000401a53 <+5>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function getval_155:
+   0x0000000000401a54 <+0>:     mov    $0xc9c4c289,%eax
+   0x0000000000401a59 <+5>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function setval_299:
+   0x0000000000401a5a <+0>:     movl   $0x91e08948,(%rdi)
+   0x0000000000401a60 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_404:
+   0x0000000000401a61 <+0>:     lea    -0x3c6d3177(%rdi),%eax
+   0x0000000000401a67 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function getval_311:
+   0x0000000000401a68 <+0>:     mov    $0xdb08d189,%eax
+   0x0000000000401a6d <+5>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function setval_167:
+   0x0000000000401a6e <+0>:     movl   $0xc391d189,(%rdi)
+   0x0000000000401a74 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function setval_328:
+   0x0000000000401a75 <+0>:     movl   $0xd238c281,(%rdi)
+   0x0000000000401a7b <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function setval_450:
+   0x0000000000401a7c <+0>:     movl   $0xc908ce09,(%rdi)
+   0x0000000000401a82 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_358:
+   0x0000000000401a83 <+0>:     lea    -0x6f1f76f8(%rdi),%eax
+   0x0000000000401a89 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_124:
+   0x0000000000401a8a <+0>:     lea    0x3cc7c289(%rdi),%eax
+   0x0000000000401a90 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function getval_169:
+   0x0000000000401a91 <+0>:     mov    $0xc020ce88,%eax
+   0x0000000000401a96 <+5>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function setval_181:
+   0x0000000000401a97 <+0>:     movl   $0xc2e08948,(%rdi)
+   0x0000000000401a9d <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function addval_184:
+   0x0000000000401a9e <+0>:     lea    -0x2d9f3d77(%rdi),%eax
+   0x0000000000401aa4 <+6>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function getval_472:
+   0x0000000000401aa5 <+0>:     mov    $0xd220ce8d,%eax
+   0x0000000000401aaa <+5>:     retq   
+End of assembler dump.
+
+Dump of assembler code for function setval_350:
+   0x0000000000401aab <+0>:     movl   $0x90e08948,(%rdi)
+   0x0000000000401ab1 <+6>:     retq   
+End of assembler dump.
