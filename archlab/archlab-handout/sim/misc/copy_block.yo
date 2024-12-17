@@ -1,0 +1,68 @@
+                            | # Execution begins at address 0 
+0x000:                      | 	.pos 0
+0x000: 30f40002000000000000 | 	irmovq stack, %rsp  	# Set up stack pointer
+0x00a: 804800000000000000   | 	call main		# Execute main program
+0x013: 00                   | 	halt			# Terminate program
+                            | 
+                            | # Source block
+0x018:                      |     .align 8
+0x018:                      | src:
+0x018: 0a00000000000000     |     .quad 0x00a
+0x020: b000000000000000     |     .quad 0x0b0
+0x028: 000c000000000000     |     .quad 0xc00
+                            | # Destination block
+0x030:                      | dest:
+0x030: 1101000000000000     |     .quad 0x111
+0x038: 2202000000000000     |     .quad 0x222
+0x040: 3303000000000000     |     .quad 0x333
+0x048: 30f71800000000000000 | main:	irmovq src,%rdi
+0x052: 30f63000000000000000 |     irmovq dest,%rsi
+0x05c: 30f20300000000000000 |     irmovq $0x3,%rdx
+0x066: 807000000000000000   | 	call copy_block		# long copy_block(long *src, long *dest, long len)
+0x06f: 90                   | 	ret
+                            | 
+0x070:                      | copy_block:
+0x070: a05f                 |     pushq %rbp
+0x072: 2045                 |     rrmovq %rsp,%rbp
+0x074: 4075e8ffffffffffffff |     rmmovq %rdi,-24(%rbp)
+0x07e: 4065e0ffffffffffffff |     rmmovq %rsi,-32(%rbp)
+0x088: 4025d8ffffffffffffff |     rmmovq %rdx,-40(%rbp)
+0x092: 30f00000000000000000 |     irmovq $0x0,%rax
+0x09c: 4005f0ffffffffffffff |     rmmovq %rax,-16(%rbp)
+0x0a6: 705f01000000000000   |     jmp L9
+0x0af:                      | L10:
+0x0af: 5005e8ffffffffffffff |     mrmovq -24(%rbp),%rax
+0x0b9: 30f30800000000000000 |     irmovq $0x8,%rbx
+0x0c3: 6030                 |     addq %rbx,%rax
+0x0c5: 2002                 |     rrmovq %rax,%rdx
+0x0c7: 6130                 |     subq %rbx,%rax
+0x0c9: 4025e8ffffffffffffff |     rmmovq %rdx,-24(%rbp)
+0x0d3: 50000000000000000000 |     mrmovq (%rax),%rax
+0x0dd: 4005f8ffffffffffffff |     rmmovq %rax,-8(%rbp)
+0x0e7: 5005e0ffffffffffffff |     mrmovq -32(%rbp),%rax
+0x0f1: 30f30800000000000000 |     irmovq $0x8,%rbx
+0x0fb: 6030                 |     addq %rbx,%rax
+0x0fd: 2002                 |     rrmovq %rax,%rdx
+0x0ff: 6130                 |     subq %rbx,%rax
+0x101: 4025e0ffffffffffffff |     rmmovq %rdx,-32(%rbp)
+0x10b: 5025f8ffffffffffffff |     mrmovq -8(%rbp),%rdx
+0x115: 40200000000000000000 |     rmmovq %rdx,(%rax)
+0x11f: 5005f8ffffffffffffff |     mrmovq -8(%rbp), %rax
+0x129: 5035f0ffffffffffffff |     mrmovq -16(%rbp),%rbx
+0x133: 6303                 |     xorq %rax,%rbx
+0x135: 4035f0ffffffffffffff |     rmmovq %rbx,-16(%rbp)
+0x13f: 30f30100000000000000 |     irmovq $0x1,%rbx
+0x149: 5015d8ffffffffffffff |     mrmovq -40(%rbp),%rcx
+0x153: 6131                 |     subq %rbx,%rcx
+0x155: 4015d8ffffffffffffff |     rmmovq %rcx,-40(%rbp)
+0x15f:                      | L9:
+0x15f: 30f30000000000000000 |     irmovq $0x0,%rbx
+0x169: 5015d8ffffffffffffff |     mrmovq -40(%rbp),%rcx
+0x173: 6131                 |     subq %rbx,%rcx
+0x175: 76af00000000000000   |     jg L10
+0x17e: 5005f0ffffffffffffff |     mrmovq -16(%rbp),%rax
+0x188: b05f                 |     popq %rbp
+0x18a: 90                   |     ret
+                            | # Stack starts here and grows to lower addresses
+0x200:                      | 	.pos 0x200
+0x200:                      | stack:

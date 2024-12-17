@@ -1,0 +1,68 @@
+# Execution begins at address 0 
+	.pos 0
+	irmovq stack, %rsp  	# Set up stack pointer
+	call main		# Execute main program
+	halt			# Terminate program
+
+# Source block
+    .align 8
+src:
+    .quad 0x00a
+    .quad 0x0b0
+    .quad 0xc00
+# Destination block
+dest:
+    .quad 0x111
+    .quad 0x222
+    .quad 0x333
+main:	irmovq src,%rdi
+    irmovq dest,%rsi
+    irmovq $0x3,%rdx
+	call copy_block		# long copy_block(long *src, long *dest, long len)
+	ret
+
+copy_block:
+    pushq %rbp
+    rrmovq %rsp,%rbp
+    rmmovq %rdi,-24(%rbp)
+    rmmovq %rsi,-32(%rbp)
+    rmmovq %rdx,-40(%rbp)
+    irmovq $0x0,%rax
+    rmmovq %rax,-16(%rbp)
+    jmp L9
+L10:
+    mrmovq -24(%rbp),%rax
+    irmovq $0x8,%rbx
+    addq %rbx,%rax
+    rrmovq %rax,%rdx
+    subq %rbx,%rax
+    rmmovq %rdx,-24(%rbp)
+    mrmovq (%rax),%rax
+    rmmovq %rax,-8(%rbp)
+    mrmovq -32(%rbp),%rax
+    irmovq $0x8,%rbx
+    addq %rbx,%rax
+    rrmovq %rax,%rdx
+    subq %rbx,%rax
+    rmmovq %rdx,-32(%rbp)
+    mrmovq -8(%rbp),%rdx
+    rmmovq %rdx,(%rax)
+    mrmovq -8(%rbp), %rax
+    mrmovq -16(%rbp),%rbx
+    xorq %rax,%rbx
+    rmmovq %rbx,-16(%rbp)
+    irmovq $0x1,%rbx
+    mrmovq -40(%rbp),%rcx
+    subq %rbx,%rcx
+    rmmovq %rcx,-40(%rbp)
+L9:
+    irmovq $0x0,%rbx
+    mrmovq -40(%rbp),%rcx
+    subq %rbx,%rcx
+    jg L10
+    mrmovq -16(%rbp),%rax
+    popq %rbp
+    ret
+# Stack starts here and grows to lower addresses
+	.pos 0x200
+stack:
