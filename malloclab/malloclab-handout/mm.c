@@ -213,16 +213,16 @@ void *mm_realloc(void *ptr, size_t size)
         return ptr;
     if(asize < GET_SIZE(HDRP(ptr))){
         newptr = (char *)ptr + asize;
-        PUT(HDRP(newptr), PACK(GET_SIZE(HDRP(ptr)) - asize, 1));
-        PUT(FTRP(newptr), PACK(GET_SIZE(HDRP(ptr)) - asize, 1));
+        PUT(HDRP(newptr), PACK(GET_SIZE(HDRP(ptr)) - asize, 0));
+        PUT(FTRP(newptr), PACK(GET_SIZE(HDRP(ptr)) - asize, 0));
         PUT(HDRP(ptr), PACK(asize, 1));
         PUT(FTRP(ptr), PACK(asize, 1));
-        free(newptr);
+        mm_free(newptr);
         return ptr;
     }
     
-    newptr = mm_malloc(size);
-    memcpy(newptr, ptr, GET_SIZE(HDRP(ptr)));
+    newptr = mm_malloc(asize);
+    memcpy(newptr, ptr, GET_SIZE(HDRP(ptr))-2*WSIZE);
     mm_free(ptr);
     return newptr;
     
